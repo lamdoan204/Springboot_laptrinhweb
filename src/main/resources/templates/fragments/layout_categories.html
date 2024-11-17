@@ -1,5 +1,7 @@
 
 <!DOCTYPE html>
+
+
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
     <head>
@@ -14,16 +16,18 @@
 <body>
 <header class="row">
     <div class="col">
-    <div th:replace="~{fragments/header}"></div>
+    <div th:replace="fragments/header :: header"></div>
     </div>
 </header>
 <main class="container">
-    <div> doanquanglam</div>
+    <div layout:fragment="Content">
+        <!-- Nội dung sẽ được chèn tại đây -->
+    </div>
 
 </main>
 <footer class="row">
     <div class="col">
-        <div th:replace="~{ragments/footer}"></div>
+        <div th:replace="fragments/footer :: footer"></div>
     </div>
 </footer>
 

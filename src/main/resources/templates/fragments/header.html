@@ -1,13 +1,14 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 <body>
-<div>
-    <div class="container-fluid bg-dark text-white p-3">
-        <img src="/thesv.jpg" alt="Header Image" style="height: 200px; width: auto;">
-        <span style="margin-left: 10px;"></span>
+    <div th:fragment="header">
+        <div>
+            <div class="container-fluid bg-dark text-white p-3">
+                <img src="/thesv.jpg" alt="Header Image" style="height: 200px; width: auto;">
+                <span style="margin-left: 10px;"></span>
+            </div>
+        </div>
     </div>
-</div>
 </body>
 </html>

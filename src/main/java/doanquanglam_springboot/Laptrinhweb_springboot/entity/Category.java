@@ -19,10 +19,29 @@ public class Category implements  Serializable {
     private Integer categoryId;
     @Column(name= "categoryName", columnDefinition=" nvarchar(100) not null ")
     private String categoryName;
-    public int getCategoryId() {
+    @Column(name="categoryStatus", columnDefinition="int default 1")
+    private int categoryStatus;
+    @Column(name = "categoryQuantity", columnDefinition="int default 0")
+    private int categoryQuantity;
+
+
+    public Category(String categoryName, int categoryQuantity, int categoryStatus ) {
+        this.categoryName = categoryName;
+        this.categoryStatus = categoryStatus;
+        this.categoryQuantity = categoryQuantity;
+    }
+    public Category() {
+    }
+    public int getCategoryQuantity() {
+        return categoryQuantity;
+    }
+    public void setCategoryQuantity(int categoryQuantity) {
+        this.categoryQuantity = categoryQuantity;
+    }
+    public Integer getCategoryId() {
         return categoryId;
     }
-    public void setCategoryId(int categoryId) {
+    public void setCategoryId(Integer categoryId) {
         this.categoryId = categoryId;
     }
     public String getCategoryName() {
@@ -31,10 +50,13 @@ public class Category implements  Serializable {
     public void setCategoryName(String categoryName) {
         this.categoryName = categoryName;
     }
-    public Category() {
+    public int getCategoryStatus() {
+        return categoryStatus;
     }
-    public Category(int categoryId, String categoryName) {
-        this.categoryId = categoryId;
-        this.categoryName = categoryName;
+    public void setCategoryStatus(int categoryStatus) {
+        this.categoryStatus = categoryStatus;
     }
+   
+    
+   
 }
