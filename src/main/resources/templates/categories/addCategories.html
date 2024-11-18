@@ -11,7 +11,29 @@ layout:decorate="~{fragments/layout_categories}"
 </head>
 <body>
     <div layout:fragment = "Content">
-         Doanquanglam
+        <form th:action="@{/categories/add}" method="post">
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Category Name</span>
+                <input type="text" class="form-control" name="categoryname" placeholder="category name"
+                    aria-describedby="addon-wrapping">
+            </div>  
+
+            <div class="input-group flex-nowrap">
+                <span class="input-group-text" id="addon-wrapping">Quantity</span>
+                <input type="text" class="form-control"  name="quantity" placeholder="category quantity"
+                    aria-describedby="addon-wrapping">
+            </div>
+
+            <div class="input-group mb-3">
+                <label class="input-group-text" for="inputGroupSelect01">Status</label>
+                <select class="form-select" id="inputGroupSelect01" name="status">
+                    <option selected>Chosen</option>
+                    <option value="1">Active</option>
+                    <option value="2">Inactive</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
     </div>
     
 </body>

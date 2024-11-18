@@ -9,6 +9,10 @@ import org.springframework.stereotype.Repository;
 import doanquanglam_springboot.Laptrinhweb_springboot.entity.Category;
 
 
+
+
+
 @Repository
 public interface CategoryRepository extends JpaRepository<Category, Integer> {  
+        Category findByCategoryId(Integer categoryId);
 }

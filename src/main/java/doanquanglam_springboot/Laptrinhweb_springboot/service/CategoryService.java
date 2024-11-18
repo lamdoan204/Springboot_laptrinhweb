@@ -1,6 +1,7 @@
 package doanquanglam_springboot.Laptrinhweb_springboot.service;
 
 import java.util.List;
+import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,14 @@ public class CategoryService {
 
         return categoryRepo.findAll();
 
+    }
+    public Category findByCategoryId(Integer id){
+       return categoryRepo.findByCategoryId(id);
+    }
+    public void updateCategory(Category category){
+        categoryRepo.save(category);
+    }
+    public void deleteById(int id){
+        categoryRepo.deleteById(id);
     }
 }
