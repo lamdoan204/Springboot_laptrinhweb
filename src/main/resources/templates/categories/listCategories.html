@@ -22,6 +22,10 @@
                         <i>[[${message}]]</i>
                     </div>
                     <!-- Hết thông báo -->
+                    <form action="/categories" method="get">
+                        <input type="text" name="search" th:value="${searchKeyword}" placeholder="Search by Category Name">
+                        <button type="submit">Search</button>
+                    </form>
                     <table class="table table-striped table-responsive">
                         <thead class="thead-inverse">
                             <tr>
@@ -36,8 +40,7 @@
                                 <td th:scope="row">[[${category.categoryId}]]</td>
                                 <td th:text="${category.categoryName}"></td>
                                 <td th:text="${category.categoryQuantity}"></td>
-                                <td th:if="${category.categoryStatus == 1}" th:text="Active"></td>
-                                <td th:if="${category.categoryStatus == 0}" th:text="Inactive"></td>
+                                <td th:text="${category.categoryStatus == 1 ? 'Active' : 'Inactive'}"></td>
                                 <td>
                                     <a th:href="@{'categories/edit/'+ ${category.categoryId}}"
                                         class="btn btn-outline-warning"><i class="fa fa-edit"></i> Edit</a>
@@ -47,12 +50,23 @@
                             </tr>
                         </tbody>
                     </table>
+                    <!-- Phân trang -->
+                    <div>
+                        <span th:if="${currentPage > 0}">
+                            <a th:href="@{/categories(page=${currentPage - 1}, search=${searchKeyword})}">Previous</a>
+                        </span>
+
+                        <span th:if="${currentPage < totalPages - 1}">
+                            <a th:href="@{/categories(page=${currentPage + 1}, search=${searchKeyword})}">Next</a>
+                        </span>
+                    </div>
                     <form action="/categories/add" method="get">
                         <button type="submit" class="btn btn-primary">Add Category</button>
                     </form>
                 </div>
 
             </div>
+
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

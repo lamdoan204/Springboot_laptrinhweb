@@ -1,9 +1,10 @@
 package doanquanglam_springboot.Laptrinhweb_springboot.service;
 
 import java.util.List;
-import java.util.Locale;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import doanquanglam_springboot.Laptrinhweb_springboot.entity.Category;
@@ -28,5 +29,12 @@ public class CategoryService {
     }
     public void deleteById(int id){
         categoryRepo.deleteById(id);
+    }
+    public Page<Category> findCategories(String searchKeyword, Pageable pageable) {
+        if (searchKeyword != null && !searchKeyword.isEmpty()) {
+            return categoryRepo.findByCategoryNameContaining(searchKeyword, pageable);
+        } else {
+            return categoryRepo.findAll(pageable);  // Nếu không tìm kiếm, lấy tất cả
+        }
     }
 }
